@@ -24,12 +24,50 @@ struct LandingView: View {
                
                 List{
                   
-                    Text("Study for Chemistry Quiz")
-                    Text("Finish Computer Science Assignment")
-                    Text("Go for a run around Campus")
-                    Text("Feed Meeko")
-                    Text("Call Mama")
-                    Text("Figure out May Break Plans")
+                    Label(
+                        title: {
+                            Text("Study for the Chemistry Quiz")
+                        }, icon: {
+                            Image(systemName: "circle")
+                        }
+                    )
+                    Label(
+                        title: {
+                            Text("Finish Computer Science Assignment")
+                        }, icon: {
+                            Image(systemName: "circle")
+                        }
+                    )
+                    Label(
+                        title: {
+                            Text("Go for a run around Campus")
+                        }, icon: {
+                            Image(systemName: "circle")
+                        }
+                    )
+
+                    Label(
+                        title: {
+                            Text("Feed Meeko")
+                        }, icon: {
+                            Image(systemName: "circle")
+                        }
+                    )
+                    Label(
+                        title: {
+                            Text("Call Mama")
+                        }, icon: {
+                            Image(systemName: "circle")
+                        }
+                    )
+                    Label(
+                        title: {
+                            Text("Figure out May Break Plans")
+                        }, icon: {
+                            Image(systemName: "circle")
+                        }
+                    )
+
                 }
                 .searchable(text: $searchText)
                 
