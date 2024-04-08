@@ -24,6 +24,14 @@ struct LandingView: View {
                
                 List{
                   
+                    
+                    
+                    Text("Study for Chemistry Quiz")
+                    Text("Finish Computer Science Assignment")
+                    Text("Go for a run around Campus")
+                    Text("Feed Meeko")
+                    Text("Call Mama")
+                    Text("Figure out May Break Plans")
                 }
                 .searchable(text: $searchText)
                 
