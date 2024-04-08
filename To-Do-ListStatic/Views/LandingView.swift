@@ -24,8 +24,6 @@ struct LandingView: View {
                
                 List{
                   
-                    
-                    
                     Text("Study for Chemistry Quiz")
                     Text("Finish Computer Science Assignment")
                     Text("Go for a run around Campus")
@@ -36,7 +34,12 @@ struct LandingView: View {
                 .searchable(text: $searchText)
                 
                 HStack{
+                  TextField("Enter a to-do item", text: $newItemDescription)
                     
+                    Button("Add") {
+                        // Add the new to-do item
+                    }
+                    .font(.caption)
                 }
                 .padding(20)
             }

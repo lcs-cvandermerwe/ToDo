@@ -6,11 +6,3 @@
 //
 
 import SwiftUI
-
-struct ItemView: View {
-    
-    
-    #Preview {
-        ItemView()
-    }
-}
