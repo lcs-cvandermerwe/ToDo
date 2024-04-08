@@ -21,58 +21,18 @@ struct LandingView: View {
         
         NavigationView {
             VStack {
-               
+                
                 List{
-                  
-                    Label(
-                        title: {
-                            Text("Study for the Chemistry Quiz")
-                        }, icon: {
-                            Image(systemName: "circle")
-                        }
-                    )
-                    Label(
-                        title: {
-                            Text("Finish Computer Science Assignment")
-                        }, icon: {
-                            Image(systemName: "circle")
-                        }
-                    )
-                    Label(
-                        title: {
-                            Text("Go for a run around Campus")
-                        }, icon: {
-                            Image(systemName: "circle")
-                        }
-                    )
-
-                    Label(
-                        title: {
-                            Text("Feed Meeko")
-                        }, icon: {
-                            Image(systemName: "circle")
-                        }
-                    )
-                    Label(
-                        title: {
-                            Text("Call Mama")
-                        }, icon: {
-                            Image(systemName: "circle")
-                        }
-                    )
-                    Label(
-                        title: {
-                            Text("Figure out May Break Plans")
-                        }, icon: {
-                            Image(systemName: "circle")
-                        }
-                    )
-
+                    
+                    ItemView(title:"Study for Chemistry Quiz", done: false)
+                    ItemView(title:"Finish Computer Science Assignment", done: true)
+                    ItemView(title: "Go for a run around campus", done: false)
+                    
                 }
                 .searchable(text: $searchText)
                 
                 HStack{
-                  TextField("Enter a to-do item", text: $newItemDescription)
+                    TextField("Enter a to-do item", text: $newItemDescription)
                     
                     Button("Add") {
                         // Add the new to-do item
@@ -87,4 +47,28 @@ struct LandingView: View {
 }
 #Preview {
     LandingView()
+}
+
+struct ItemView: View {
+    
+    let title: String
+    let done: Bool
+    
+    
+    var body: some View {
+        Label(
+            title: {
+                Text(title)
+            }, icon: {
+                if done == true {
+                    Image(systemName: "checkmark.circle")
+                } else {
+                    Image(systemName: "circle")
+                }
+                
+                
+            }
+            
+        )
+    }
 }
