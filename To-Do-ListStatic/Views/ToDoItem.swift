@@ -7,10 +7,16 @@
 
 import Foundation
 
-struct ToDoItem: Identifiable {
-    let id = UUID()
+@Model
+class ToDoItem: Identifiable {
     var title: String
     var done: Bool
+    
+    
+    init(title: String, done: Bool) {
+        self.title = title
+        self.done = done
+    }
 }
 
 let firstItem =
