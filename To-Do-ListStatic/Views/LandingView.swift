@@ -78,8 +78,8 @@ struct LandingView: View {
         todos.removeAll { currentItem in
             currentItem.id == todo.id}
     }
-}
-#Preview {
-    LandingView()
-}
+    }
+//    #Preview {
+//        LandingView()
+//    }
 
