@@ -5,7 +5,7 @@
 //  Created by Cari van der Merwe on 2024-04-08.
 //
 
-import Foundation
+import SwiftData
 
 @Model
 class ToDoItem: Identifiable {
