@@ -50,39 +50,40 @@ struct LandingView: View {
                     }
                     .font(.caption)
                     .disabled(newItemDescription.isEmpty == true)
+                    // MARK: Functions
+                    func createToDo(withTitle title: String) {
+                        
+                        // Create the new to-do item instance
+                        let todo = ToDoItem(
+                            title: title,
+                            done: false
+                        )
+                        
+                        
+                        // Use the model context to insert the new to-do
+                        modelContext.insert(todo)
+                    
+                    
+                    func removeRows(at offsets: IndexSet) {
+                        // Accept the offset within the list
+                        // (the position of the item being deleted)
+                        //
+                        // Then ask the model context to delete this
+                        // for us, from the 'todos' array
+                        for offset in offsets {
+                            modelContext.delete(todos[offset])
+                        }
+                      }
+                    }
                 }
                 .padding(20)
             }
             .navigationTitle("To do")
         }
     }
-    
-    // MARK: Functions
-    func createToDo(withTitle title: String) {
-        
-        // Create the new to-do item instance
-        let todo = ToDoItem(
-            title: title,
-            done: false
-        )
-        
-        
-        // Use the model context to insert the new to-do
-        modelContext.insert(todo)
+
+    #Preview {
+        LandingView()
+            .modelContainer(ToDoItem.preview)
     }
-    
-    func removeRows(at offsets: IndexSet) {
-        // Accept the offset within the list
-        // (the position of the item being deleted)
-        //
-        // Then ask the model context to delete this
-        // for us, from the 'todos' array
-        for offset in offsets {
-            modelContext.delete(todos[offset])
-        }
-      }
-    }
-//    #Preview {
-//        LandingView()
-//    }
 
