@@ -7,6 +7,7 @@
 
 import SwiftData
 import SwiftUI
+
 struct LandingView: View {
     
     // MARK: Stored Properties
@@ -34,11 +35,11 @@ struct LandingView: View {
                     ForEach(todos) { todo in
                         ItemView(currentItem: todo)
                         
-                                }
+                    }
                     .onDelete(perform: removeRows)
-                        }
-                     
                 }
+                
+                
                 .searchable(text: $searchText)
                 
                 HStack{
@@ -47,43 +48,49 @@ struct LandingView: View {
                     Button("Add") {
                         // Add the new to-do item
                         createToDo(withTitle: newItemDescription)
+                        newItemDescription = ""
                     }
                     .font(.caption)
                     .disabled(newItemDescription.isEmpty == true)
-                    // MARK: Functions
-                    func createToDo(withTitle title: String) {
-                        
-                        // Create the new to-do item instance
-                        let todo = ToDoItem(
-                            title: title,
-                            done: false
-                        )
-                        
-                        
-                        // Use the model context to insert the new to-do
-                        modelContext.insert(todo)
                     
-                    
-                    func removeRows(at offsets: IndexSet) {
-                        // Accept the offset within the list
-                        // (the position of the item being deleted)
-                        //
-                        // Then ask the model context to delete this
-                        // for us, from the 'todos' array
-                        for offset in offsets {
-                            modelContext.delete(todos[offset])
-                        }
-                      }
-                    }
                 }
                 .padding(20)
             }
-            .navigationTitle("To do")
         }
+        .navigationTitle("To do")
     }
 
-    #Preview {
-        LandingView()
-            .modelContainer(ToDoItem.preview)
+    // MARK: Functions
+    func createToDo(withTitle title: String) {
+        
+        // Create the new to-do item instance
+        let todo = ToDoItem(
+            title: title,
+            done: false
+        )
+        
+        
+        // Use the model context to insert the new to-do
+        modelContext.insert(todo)
+        
+        
+        
     }
+  
+    func removeRows(at offsets: IndexSet) {
+        // Accept the offset within the list
+        // (the position of the item being deleted)
+        //
+        // Then ask the model context to delete this
+        // for us, from the 'todos' array
+        for offset in offsets {
+            modelContext.delete(todos[offset])
+        }
+    }
+}
+
+#Preview {
+    LandingView()
+        .modelContainer(ToDoItem.preview)
+}
 
